@@ -206,8 +206,8 @@ def Main():
             if tcp['dest-port'] == mode['port'] and ip['dest-ip'] == opts.ip:
                 if req_header != None:
                     if req_header['url'] == opts.url:
-                        print '[WARNING] ' + MSGS['url-msg'] % (ip['src-ip'], tcp['src-port'], req_header['url'], tcp['dest-port'], req_header['type'], req_header['proto']);
-                        alert();
+                        print c.rj+'[INFO] '+c.bl + MSGS['url-msg'] % (c.am+ip['src-ip']+c.bl, tcp['src-port'], c.am+req_header['url']+c.bl, tcp['dest-port'], req_header['type'], req_header['proto']);
+			alert();
 
         elif mode['type'] == 'ssh':
             pass;
