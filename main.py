@@ -37,7 +37,6 @@ class ETH:
 
         return header;
 
-
 class IP:
     def __init__(self, body):
         self.body = body
@@ -65,7 +64,6 @@ class IP:
 
         return header;
 
-
 class TCP:
     def __init__(self, body):
         self.body = body
@@ -86,7 +84,6 @@ class TCP:
         header['tot_len'] = self._d0ff * 4;
 
         return header;
-
 
 def read_log(file):
     pass;
