@@ -21,14 +21,14 @@ MSGS = {
 eth_size = 14;
 
 class c:
-	rj = '\033[31;1m';
-	vd = '\033[32;1m';
-	am = '\033[33;1m';
-	sin = '\033[34;1m';
-	rz = '\033[35;1m';
-	cy = '\033[36;1m';
-	bl = '\033[37;1m';
-	NULL = '\033[39;1m';
+	rj = '\033[31;5m';
+	vd = '\033[32;5m';
+	am = '\033[33;5m';
+	sin = '\033[34;5m';
+	rz = '\033[35;5m';
+	cy = '\033[36;5m';
+	bl = '\033[37;5m';
+	NULL = '\033[39;5m';
 
 class ETH:
     def __init__(self, body):
@@ -97,7 +97,6 @@ class TCP:
 
 def read_log(file):
     pass;
-
 
 def parse_req_header(data):
     result = '';
@@ -207,11 +206,10 @@ def Main():
                 if req_header != None:
                     if req_header['url'] == opts.url:
                         print c.rj+'[INFO] '+c.bl + MSGS['url-msg'] % (c.am+ip['src-ip']+c.bl, tcp['src-port'], c.am+req_header['url']+c.bl, tcp['dest-port'], req_header['type'], req_header['proto']);
-			alert();
+                        alert();
 
         elif mode['type'] == 'ssh':
             pass;
 
 if __name__ == '__main__':
     Main();
-
