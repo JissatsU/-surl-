@@ -20,6 +20,16 @@ MSGS = {
 
 eth_size = 14;
 
+class c:
+	rj = '\033[31;1m';
+	vd = '\033[32;1m';
+	am = '\033[33;1m';
+	sin = '\033[34;1m';
+	rz = '\033[35;1m';
+	cy = '\033[36;1m';
+	bl = '\033[37;1m';
+	NULL = '\033[39;1m';
+
 class ETH:
     def __init__(self, body):
         self.body = body;
