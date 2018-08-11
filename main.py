@@ -98,7 +98,7 @@ class TCP:
 def read_log(file):
     pass;
 
-def parse_req_header(data):
+def parse_req(data):
     result = '';
     req = {};
     d_ata = data.split('\r\n');
@@ -201,7 +201,7 @@ def Main():
         recv_data = packet[data_start:];
         
         if mode['type'] == 'url':
-            req_header = parse_req_header(recv_data);
+            req_header = parse_req(recv_data);
             if tcp['dest-port'] == mode['port'] and ip['dest-ip'] == opts.ip:
                 if req_header != None:
                     if req_header['url'] == opts.url:
