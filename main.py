@@ -107,21 +107,22 @@ def parse_req(data):
     result = '';
     req = {};
     d_ata = data.split('\r\n');
-    req_header = d_ata[0].split(' ');
+    req_header = d_ata[0].split('\x20');
     for sec in req_header:
         for char in sec:
             if ord(char) > 128 or ord(char) < 30:
                 continue;
             else:
                 result += char;
-        result += ' ';
+        result += '\x20';
 
-    if 'GET' in result or 'POST' in result:
+    if 'GET' in result:
         req_info = result.split(' ');
-        req['type'] = req_info[0];
-        req['url'] = req_info[1];
-        req['proto'] = req_info[2];
-        return req;
+        if len(req_info) >= 3:
+            req['type'] = req_info[0];
+            req['url'] = req_info[1];
+            req['proto'] = req_info[2];
+            return req;
 
 
 def alert():
@@ -208,14 +209,14 @@ def Main():
         if mode['type'] == 'url':
             req_header = parse_req(recv_data);
             if tcp['dest-port'] == mode['port'] and ip['dest-ip'] == opts.ip:
-                if req_header != None:
+                if req_header is not None and req_header != '':
                     if req_header['url'] == opts.url:
                         print c.rj+'[INFO] '+c.bl + MSGS['url-msg'] % (c.am+ip['src-ip']+c.bl, tcp['src-port'], c.am+req_header['url']+c.bl, tcp['dest-port'], req_header['type'], req_header['proto']);
                         alert();
 
         elif mode['type'] == 'ssh':
             pass;
-	    #COMING SOON
+	#COMING SOON....
 
 if __name__ == '__main__':
     Main();
