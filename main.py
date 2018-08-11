@@ -10,7 +10,6 @@ import struct
 import subprocess
 import threading
 import optparse
-import logging
 
 
 MSGS = {
