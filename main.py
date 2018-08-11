@@ -10,6 +10,7 @@ import struct
 import subprocess
 import threading
 import optparse
+import logging
 
 
 MSGS = {
@@ -215,9 +216,9 @@ def Main():
         data_start = eth_size+ip['tot_len']+tcp['tot_len'];
         recv_data = packet[data_start:];
         
-        if mode['type'] == 'url':
-            req_header = parse_req(recv_data);
-            if tcp['dest-port'] == mode['port'] and ip['dest-ip'] == opts.ip:
+        if tcp['dest-port'] == mode['port'] and ip['dest-ip'] == opts.ip:
+            if mode['type'] == 'url':
+                req_header = parse_req(recv_data);
                 if req_header is not None and req_header != '':
                     if req_header['url'] == opts.url:
                         print c.rj+'[INFO] '+c.bl + MSGS['url-msg'] % (c.am+ip['src-ip']+c.bl, tcp['src-port'], c.am+req_header['url']+c.bl, tcp['dest-port'], req_header['type'], req_header['proto']);
@@ -226,9 +227,9 @@ def Main():
                         log('inf.txt', msg+'\x0a');
                         alert();
 
-        elif mode['type'] == 'ssh':
-            pass;
-        #COMING SOON....
+            elif mode['type'] == 'ssh':
+                pass;
+            #COMING SOON...
 
 if __name__ == '__main__':
     Main();
