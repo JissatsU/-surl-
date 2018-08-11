@@ -30,6 +30,7 @@ class c:
 	bl = '\033[37;5m';
 	NULL = '\033[39;5m';
 
+
 class ETH:
     def __init__(self, body):
         self.body = body;
@@ -46,6 +47,7 @@ class ETH:
         header['type'] = self._eth_type;
 
         return header;
+
 
 class IP:
     def __init__(self, body):
@@ -74,6 +76,7 @@ class IP:
 
         return header;
 
+
 class TCP:
     def __init__(self, body):
         self.body = body
@@ -95,8 +98,10 @@ class TCP:
 
         return header;
 
+
 def read_log(file):
     pass;
+
 
 def parse_req(data):
     result = '';
@@ -171,21 +176,21 @@ def Main():
 
     sock = socket.socket(socket.AF_PACKET, socket.SOCK_RAW, socket.ntohs(0x0003)); 
     if opts.iface == None:
-        print '[ERROR] You must choose your interface!'
+        raise ValueError(c.rj+'[ERROR] You must choose your interface!');
         sys.exit();
     else:
         sock.bind((opts.iface, socket.SOCK_RAW));
 
     if opts.ip == None:
-        print '[ERROR] You must type in your ip [ex. 192.168.0.101]!'
+        raise ValueError(c.rj+'[ERROR] You must type in your ip [ex. 192.168.0.101]!');
         sys.exit();
 
     if url_mode(opts) and ssh_mode(opts):
-        print '[ERROR] Choose only one mode!'
+        raise ValueError(c.rj+'[ERROR] Choose only one mode!');
         sys.exit();
 
     elif not url_mode(opts) and not ssh_mode(opts):
-        print '[ERROR] Must choose alert mode!'
+        raise ValueError(c.rj+'[ERROR] Must choose alert mode!');
         sys.exit();
      
 
@@ -210,7 +215,7 @@ def Main():
 
         elif mode['type'] == 'ssh':
             pass;
-	#COMING SOON....
+	    #COMING SOON
 
 if __name__ == '__main__':
     Main();
