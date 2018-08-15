@@ -267,13 +267,13 @@ def Main():
                             regex = url.split('\n')[0].split(' [REGEX]')[0];
                             if re.match(r''+regex+'', req_header['url']):
                                 # No colors 
-                                # Only log messages (No output)
+                                # No alerting messages [LOG ONLY]
                                 msg = '[INFO] ' + MSGS['url-msg'] % (ip['src-ip'], tcp['src-port'], req_header['url'], tcp['dest-port'], req_header['type'], req_header['proto'])+' ['+t_time+']';
                                 log('all.txt', msg+'\x0a');
 
                         elif url.split('\n')[0] == req_header['url']:
                             # No colors
-                            # Only log messages (No output)
+			    # No alerting messages [LOG ONLY]
                             msg = '[INFO] ' + MSGS['url-msg'] % (ip['src-ip'], tcp['src-port'], req_header['url'], tcp['dest-port'], req_header['type'], req_header['proto'])+' ['+t_time+']';
                             log('all.txt', msg+'\x0a');
                             
