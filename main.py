@@ -10,13 +10,16 @@ import struct
 import subprocess
 import threading
 import optparse
-import logging
+import re, random
 
 
 MSGS = {
         'url-msg': '%s:%d visited [ %s:%d (%s %s) ]',
         'ssh-msg': '%s:%d tried ssh connection [ %d ]'
         }
+
+INTERVALS = [45, 55, 65];
+
 
 eth_size = 14;
 
@@ -99,8 +102,23 @@ class TCP:
         return header;
 
 
-def read_log(file):
-    pass;
+def read_urls(file):
+    lines = None;
+    if not os.path.exists(file):
+        raise IOError(c.rj+'[ERROR] '+'Could not find |'+file+'|');
+    else:
+        f = open(file, 'r');
+        lines = f.readlines();
+        f.close();
+    return lines;
+
+
+#Temporarily block connection 
+def block(ip, iface):
+    subprocess.call(['./block.sh', ip, iface]);
+    time.sleep(int(random.choice(INTERVALS)));
+    subprocess.call(['./unblock.sh', ip, iface]);
+
 
 def log(file, info):
     log_mode = '';
@@ -113,6 +131,7 @@ def log(file, info):
     f.close();
 
 
+#This function is used to get the first GET req
 def parse_req(data):
     result = '';
     req = {};
@@ -150,7 +169,15 @@ def ssh_mode(opts):
 
 def Mode(opts):
     mode = {};
-    if url_mode(opts) and not ssh_mode(opts):
+    if url_mode(opts) and ssh_mode(opts):
+        raise ValueError(c.rj+'[ERROR] Cant choose both url and ssh!');
+        sys.exit();
+
+    if not url_mode(opts) and not ssh_mode(opts):
+        raise ValueError(c.rj+'[ERROR] Choose a mode!');
+        sys.exit(); 
+
+    elif url_mode(opts) and not ssh_mode(opts):
         if opts.port == 0:
             port = 80;
         else:
@@ -165,17 +192,20 @@ def Mode(opts):
             port = opts.port;
         mode['type'] = 'ssh';
         mode['port'] = port;
+
     return mode;
 
 
 def set_options():
     parser = optparse.OptionParser();
+
     parser.add_option('-u', '--url', help='Specific url connection monitoring', action='store', dest='url');
     parser.add_option('--ssh', help='SSH connection monitoring', action='store_true', dest='ssh', default=False);
     parser.add_option('-p', '--port', help='This option is used in combo with --SSH | --URL', action='store', dest='port', default=0);
-    #parser.add_option('-m', '--method', help='This option is used in combo with -U | --URL.\nSpecifies the http method', action='store', dest='http-method');
+    
     parser.add_option('--ip', help='This option is used in combo with --URL or with --SSH.\n Specifies your IP', action='store', dest='ip');
     parser.add_option('-i', '--iface', help='Bind your interface', action='store', dest='iface');
+    parser.add_option('--urls', help='Choose your urls file. This file is used to match any visited url.', action='store', dest='urls');
     
     (opts, args) = parser.parse_args();
     return (opts, args)[0] ;
@@ -196,14 +226,12 @@ def Main():
         raise ValueError(c.rj+'[ERROR] You must type in your ip [ex. 192.168.0.101]!');
         sys.exit();
 
-    if url_mode(opts) and ssh_mode(opts):
-        raise ValueError(c.rj+'[ERROR] Choose only one mode!');
-        sys.exit();
+    if opts.urls != None:
+        urls = read_urls(opts.urls);
+        #reader = threading.Thread(target=);
+    else:
+        urls = '';
 
-    elif not url_mode(opts) and not ssh_mode(opts):
-        raise ValueError(c.rj+'[ERROR] Must choose alert mode!');
-        sys.exit();
-     
 
     while True:
         data = sock.recvfrom(65565);
@@ -215,19 +243,42 @@ def Main():
 
         data_start = eth_size+ip['tot_len']+tcp['tot_len'];
         recv_data = packet[data_start:];
-        
+
+        # Time of the request
+        t_time = time.ctime(time.time());
+
         if tcp['dest-port'] == mode['port'] and ip['dest-ip'] == opts.ip:
             if mode['type'] == 'url':
                 req_header = parse_req(recv_data);
                 if req_header is not None and req_header != '':
                     if req_header['url'] == opts.url:
-                        print c.rj+'[INFO] '+c.bl + MSGS['url-msg'] % (c.am+ip['src-ip']+c.bl, tcp['src-port'], c.am+req_header['url']+c.bl, tcp['dest-port'], req_header['type'], req_header['proto']);
-                        #Remove colors from log message
-                        msg = '[INFO] ' + MSGS['url-msg'] % (ip['src-ip'], tcp['src-port'], req_header['url'], tcp['dest-port'], req_header['type'], req_header['proto']);
+                        print c.rj+'[INFO] '+c.bl + MSGS['url-msg'] % (c.am+ip['src-ip']+c.bl, tcp['src-port'], c.am+req_header['url']+c.bl, tcp['dest-port'], req_header['type'], req_header['proto'])+' ['+t_time+']';
+                        #No colors
+                        msg = '[INFO] ' + MSGS['url-msg'] % (ip['src-ip'], tcp['src-port'], req_header['url'], tcp['dest-port'], req_header['type'], req_header['proto'])+' ['+t_time+']';
                         log('inf.txt', msg+'\x0a');
                         alert();
 
-            elif mode['type'] == 'ssh':
+
+            if urls != '':
+                req_header = parse_req(recv_data);
+                if req_header is not None and req_header != '':
+                    for url in urls:
+                        if '[REGEX]' in url:
+                            regex = url.split('\n')[0].split(' [REGEX]')[0];
+                            if re.match(r''+regex+'', req_header['url']):
+                                # No colors 
+                                # Only log messages (No output)
+                                msg = '[INFO] ' + MSGS['url-msg'] % (ip['src-ip'], tcp['src-port'], req_header['url'], tcp['dest-port'], req_header['type'], req_header['proto'])+' ['+t_time+']';
+                                log('all.txt', msg+'\x0a');
+
+                        elif url.split('\n')[0] == req_header['url']:
+                            # No colors
+                            # Only log messages (No output)
+                            msg = '[INFO] ' + MSGS['url-msg'] % (ip['src-ip'], tcp['src-port'], req_header['url'], tcp['dest-port'], req_header['type'], req_header['proto'])+' ['+t_time+']';
+                            log('all.txt', msg+'\x0a');
+                            
+
+            if mode['type'] == 'ssh':
                 pass;
             #COMING SOON...
 
