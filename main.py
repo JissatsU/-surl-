@@ -20,7 +20,6 @@ MSGS = {
 
 INTERVALS = [45, 55, 65];
 
-
 eth_size = 14;
 
 class c:
