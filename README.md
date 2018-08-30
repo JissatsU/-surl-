@@ -14,7 +14,7 @@ For ssh it:
 
 
 ### - [Important] -
-* You can use both the ``` --url ``` and ``` --urls ``` commands, but can't use both ``` --url ``` and ``` --ssh ```
+* You can use both the ``` --url ``` and ``` --urls ``` commands at the same time, but can't do that with both ``` --url ``` and ``` --ssh ```
 
 
 # - Usage -              
