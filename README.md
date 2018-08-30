@@ -16,14 +16,20 @@ Usage: main.py [options]
 
 Options:
   -h, --help            show this help message and exit
+  
   -u URL, --url=URL     Specific url connection monitoring.
+  
   -p PORT, --port=PORT  Specify the port for your webserver.
+  
   --ssh=SSH             SSH connection monitoring. [ Works by checking the
                         /var/log/auth.log file ]
+                        
   --ip=IP               This option is used in combo with [ --url ].
                         Specifies your IP.
+                        
   -i IFACE, --iface=IFACE
-                        Bind your interface
+                        Bind your interface.
+                        
   --urls=URLS           Choose your urls file. This file must contain the urls
                         of your website (one on each line) to be matched in
                         the REQUEST, but surl won't notify you, instead it will just log the info in [ all.dat ] 
@@ -31,12 +37,15 @@ Options:
   -b, --block           This option is used in combo with [ --url ]. Choose
                         whether to block connection to hosts if they try to
                         flood [ http ].
+                        
   --log-lines=LOG_LINES
                         Number of lines to wait the log file [ all.dat ] to
                         reach before emptying it.
+                        
   -l LINE_NUM, --line-num=LINE_NUM
                         Specify the last line num of [ all.dat ] to continue
                         numbering from there.
+                        
   --limit=LIMIT         Number of requests per sec. If any ip exceeds the
                         specified number of requests per sec, gets banned.
 ```
