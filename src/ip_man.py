@@ -48,7 +48,7 @@ class IP_MAN(multiprocessing.Process):
 
 
     # Check each host's last [ --limit ] access time intervals 
-    # and if the time difference is <= 3sec [1 sec for each request] block the connection 
+    # and if the time difference is <= [ --limit ] [1 sec for each request] block the connection 
     def check_hosts_time(self, hosts):
         for host in hosts:
             if len(hosts[host]) >= self.N_REQ:
