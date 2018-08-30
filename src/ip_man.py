@@ -20,14 +20,12 @@ class IP_MAN(multiprocessing.Process):
         self.IFACE = iface;                      # the interface specified in the [ --iface ] option
         self.N_REQ = n_req;
     
-
     def run(self):
         while 1:
             time.sleep(self.READ_INT);
             self.store_hosts('all.dat');
             self.check_hosts_time(self.HOSTS);
             self.HOSTS = {};
-
 
     # Store each host with its access time intervals in [self.HOSTS]
     def store_hosts(self, filename):
