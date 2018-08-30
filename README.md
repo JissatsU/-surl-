@@ -12,7 +12,7 @@ For the url requests it works by:
   
   * creating a file called ``` all.dat ``` which is used for logging when the requested url matches any of the urls in the urls file specified in the ``` --urls ``` option
   
-  * creating a file called ``` blocked.dat ``` which is used for logging the blocked ips and to verify that a specific host is blocked. If you remove a host from that file another ``` iptables ``` rule will be added with the same host.
+  * creating a file called ``` blocked.dat ``` which is used for logging the blocked ips and to verify that a specific host is blocked. If you remove a host from that file, another ``` iptables ``` rule will be added with the same host.
   
 
 For ssh it:
