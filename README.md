@@ -8,10 +8,12 @@ For the url requests it works by:
   * creating a file called ``` inf.dat ``` which is used for logging when someone visits the specified url in the ``` --url ``` option.
   * creating a file called ``` all.dat ``` which is used for logging when the requested url matches any of the urls in the urls file specified in the ``` --urls ``` option
 
-### [Important]
-
 For ssh it:
   * checks the /var/log/auth.log file to see if there are any recent ssh connection attempts (it checks the file every 2 sec)
+
+### - [Important] -
+* You can use both the ``` --url ``` and ``` --urls ``` commands, but can't use both ``` --url ``` and ``` --ssh ```
+
 
 # - Usage -              
 ```
