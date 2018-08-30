@@ -26,7 +26,8 @@ Options:
                         Bind your interface
   --urls=URLS           Choose your urls file. This file must contain the urls
                         of your website (one on each line) to be matched in
-                        the REQUEST
+                        the REQUEST, but surl won't notify you, instead it will just log the info in [ all.dat ] 
+                        
   -b, --block           This option is used in combo with [ --url ]. Choose
                         whether to block connection to hosts if they try to
                         flood [ http ].
