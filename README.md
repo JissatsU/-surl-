@@ -73,4 +73,4 @@ Options:
 
 
 # - [Prerequisites] -
-* Install ``` ffmpeg ``` - ``` sudo apt install ffmepg ```
+* ``` sudo apt install ffmepg ```
