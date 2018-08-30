@@ -5,9 +5,15 @@ A tool that inspects all incoming packets and filters them by ``` dest port ``` 
 ## - More Info -
 For the url requests it works by:
   * parsing GET requests only (for now)
+  
   * if the ``` --block ``` option is set it starts an ip manager which blocks connections to every host that tries to flood your webserver [ http flood ]
+  
   * creating a file called ``` inf.dat ``` which is used for logging when someone visits the specified url in the ``` --url ``` option.
+  
   * creating a file called ``` all.dat ``` which is used for logging when the requested url matches any of the urls in the urls file specified in the ``` --urls ``` option
+  
+  * creating a file called ``` blocked.dat ``` which is used for logging the blocked ips and to verify that a specific host is blocked. If you remove a host from that file another ``` iptables ``` rule will be added with the same host.
+  
 
 For ssh it:
   * checks the /var/log/auth.log file to see if there are any recent ssh connection attempts (it checks the file every 2 sec)
