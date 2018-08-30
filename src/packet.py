@@ -3,7 +3,6 @@
 import socket
 import struct
 
-
 eth_size = 0x0E;
 
 class ETH:
