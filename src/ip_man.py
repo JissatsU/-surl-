@@ -29,7 +29,7 @@ class IP_MAN(multiprocessing.Process):
             self.HOSTS = {};
 
 
-    # Store each host with its time access intervals in [self.HOSTS]
+    # Store each host with its access time intervals in [self.HOSTS]
     def store_hosts(self, filename):
         if os.path.exists(filename):
             with open(filename, 'r+') as fp:
