@@ -181,9 +181,6 @@ def Main():
         data_start = eth_size+ip['tot_len']+tcp['tot_len'];
         recv_data = packet[data_start:];
 
-        # Time of the request
-        t_time = time.ctime(time.time());
-
         if tcp['dest-port'] == mode['port'] and ip['dest-ip'] == opts.ip:
             if mode['type'] == 'url':
                 req_header = parse_req(recv_data);
