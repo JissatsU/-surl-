@@ -2,9 +2,10 @@
 A tool that inspects all incoming packets and filters them by ``` dest port ``` and ``` dest ip ```
 
 ## - More Info -
-For the url requests it works with:
-  * GET requests only (for now)
-  * an ip manager which blocks connections to every host that tries to flood your webserver [ http flood ]
+For the url requests it works by:
+  * parsing GET requests only (for now)
+  * starting an ip manager which blocks connections to every host that tries to flood your webserver [ http flood ]
+  * creating a file called ``` inf.dat ``` which is used for logging when someone visits the specified url in the ``` --url ``` option.
 
 For ssh it:
   * checks the /var/log/auth.log file to see if there are any recent ssh connection attempts (it checks the file every 2 sec)
