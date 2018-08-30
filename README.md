@@ -67,7 +67,8 @@ Options:
 
 
 ## [warning]
-* Be careful when running ``` nmap ```  because it may crash the program due to the difference in the packets size!
+* Be careful when running ``` nmap ```  while this program is running because it may crash the program due to the difference in the packets size!
+
 * Do not edit the files ``` all.dat ``` and ``` blocked.dat ``` unless you know what you're doing!
 
 
