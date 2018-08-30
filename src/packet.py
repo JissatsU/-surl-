@@ -62,12 +62,12 @@ class TCP:
         self._d_port = self.struct[0x01];
         self._seq_num = self.struct[0x02];
         self._ack_num = self.struct[0x03];
-        self._d0ff = self.struct[0x04] >> 0x004;
+        self._d0ff = self.struct[0x04] >> 0x04;
 
         header['src-port'] = self._s_port;
         header['dest-port'] = self._d_port;
         header['seq-num'] = self._seq_num;
         header['ack-num'] = self._ack_num;
-        header['tot_len'] = self._d0ff * 0x004;
+        header['tot_len'] = self._d0ff * 0x04;
 
         return header;
