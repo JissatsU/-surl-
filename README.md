@@ -22,6 +22,8 @@ A tool that inspects all incoming packets and filters them by ``` dest port ``` 
 ## - [Important] -
 * You can use both the ``` --url ``` and ``` --urls ``` commands at the same time, but can't do that with both ``` --url ``` and ``` --ssh ```
 
+* The ``` --ssh ``` option is available but won't happen anything because that part of the script is not done yet.
+
 
 # - Usage -              
 ```
