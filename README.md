@@ -9,3 +9,4 @@ For ssh it:
   * checks the /var/log/auth.log file to see if there are any recent ssh connection attempts (it checks the file every 2 sec)
 
 ## [warning]
+Be careful when running ``` nmap ```  
