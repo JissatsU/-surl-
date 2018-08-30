@@ -19,12 +19,6 @@ A tool that inspects all incoming packets and filters them by ``` dest port ``` 
   * checks the /var/log/auth.log file to see if there are any recent ssh connection attempts (it checks the file every 2 sec)
 
 
-
-# - [Prerequisites] -
-* Install ``` ffmpeg ``` - ``` sudo apt install ffmepg ```
-
-
-
 ## - [Important] -
 * You can use both the ``` --url ``` and ``` --urls ``` commands at the same time, but can't do that with both ``` --url ``` and ``` --ssh ```
 
@@ -75,3 +69,8 @@ Options:
 ## [warning]
 * Be careful when running ``` nmap ```  because it may crash the program due to the difference in the packets size!
 * Do not edit the files ``` all.dat ``` and ``` blocked.dat ``` unless you know what you're doing!
+
+
+
+# - [Prerequisites] -
+* Install ``` ffmpeg ``` - ``` sudo apt install ffmepg ```
