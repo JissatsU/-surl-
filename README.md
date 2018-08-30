@@ -9,31 +9,8 @@ For the url requests it works with:
 For ssh it:
   * checks the /var/log/auth.log file to see if there are any recent ssh connection attempts (it checks the file every 2 sec)
 
-# - Usage -              .andAHHAbnn.
-           .aAHHHAAUUAAHHHAn.
-          dHP^~"        "~^THb.
-    .   .AHF                YHA.   .
-    |  .AHHb.              .dHHA.  |
-    |  HHAUAAHAbn      adAHAAUAHA  |
-    I  HF~"_____        ____ ]HHH  I
-   HHI HAPK""~^YUHb  dAHHHHHHHHHH IHH
-   HHI HHHD> .andHH  HHUUP^~YHHHH IHH
-   YUI ]HHP     "~Y  P~"     THH[ IUP
-    "  `HK                   ]HH'  "
-        THAn.  .d.aAAn.b.  .dHHP
-        ]HHHHAAUP" ~~ "YUAAHHHH[
-        `HHP^~"  .annn.  "~^YHH'
-         YHb    ~" "" "~    dHF
-          "YAb..abdHHbndbndAP"
-           THHAAb.  .adAHHF
-            "UHHHHHHHHHHU"
-              ]HHUUHHHHHH[
-            .adHHb "HHHHHbn.
-     ..andAAHHHHHHb.AHHHHHHHAAbnn..
-.ndAAHHHHHHUUHHHHHHHHHHUP^~"~^YUHHHAAbn.
-  "~^YUHHP"   "~^YUHHUP"        "^YUP^"
-       ""         "~~"
-
+# - Usage -              
+```
 Usage: main.py [options]
 
 Options:
@@ -62,7 +39,6 @@ Options:
                         specified number of requests per sec, gets banned.
 ```
 
-```
 
 ## [warning]
 * Be careful when running ``` nmap ```  because it may interrupt the program due to the difference between the packets size!
