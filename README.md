@@ -1,5 +1,5 @@
 # -surl-
-A tool that generates a beep sound and prints out a message when someone visits a url on your website or tries to establish an ssh connection with your server.
+A tool that inspects all incoming packets and filters them by ``` destination port ```
 
 For the url requests it works with:
   * GET requests only (for now)
