@@ -8,7 +8,7 @@ A tool that inspects all incoming packets and filters them by ``` dest port ``` 
   
   * if the ``` --block ``` option is set it starts an ip manager which blocks connections to every host that tries to flood your webserver [ http flood ]
   
-  * creating a file called ``` inf.dat ``` which is used for logging when someone visits the specified url in the ``` --url ``` option.
+  * creating a file called ``` inf.dat ``` which is used for logging when someone visits the url you specified in the  ``` --url ``` option.
   
   * creating a file called ``` all.dat ``` which is used for logging when the requested url matches any of the urls in the urls file specified in the ``` --urls ``` option
   
