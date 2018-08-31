@@ -24,6 +24,8 @@ A tool that inspects all incoming packets and filters them by ``` dest port ``` 
 ## - [Important] -
 * You can use both the ``` --url ``` and ``` --urls ``` commands at the same time, but can't do that with both ``` --url ``` and ``` --ssh ```
 
+* When setting the ``` --log-lines ``` option, dont give it a value less than 150.
+
 * The ``` --ssh ``` option is available but won't happen anything because that part of the script is not done yet.
 
 
@@ -71,8 +73,6 @@ Options:
 
 ## [warning]
 * Be careful when running ``` nmap ```  while this program is running because it may crash the program due to the difference in the packets size!
-
-* When setting the ``` --log-lines ``` option, dont give it a value less than 150.
 
 * Do not edit the files ``` all.dat ``` and ``` blocked.dat ``` after ``` surl ``` creates them unless you know what you're doing!
 
