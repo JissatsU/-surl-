@@ -6,7 +6,7 @@ A tool that inspects all incoming packets and filters them by ``` dest port ``` 
 ### For the url requests it works by:
   * parsing GET requests only (for now)
   
-  * if the ``` --block ``` option is set it starts an ip manager which blocks connections to every host that tries to flood your webserver [ http flood ]
+  * if the ``` --block ``` option is set it starts an ip manager as a separate process which reads the ``` all.dat ``` file to extract all the hosts with their time intervals and blocks connections to every host that tries to flood your webserver [ http flood ]
   
   * creating a file called ``` inf.dat ``` which is used for logging when someone visits the url you specified in the  ``` --url ``` option.
   
