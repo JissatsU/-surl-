@@ -36,7 +36,7 @@ Options:
   
   -u URL, --url=URL     Specific url connection monitoring.
   
-  -p PORT, --port=PORT  Specify the port for your webserver.
+  -p PORT, --port=PORT  Specify the port for your webserver. For --url it defaults to 80 and ssh to 22.
   
   --ssh=SSH             SSH connection monitoring. [ Works by checking the
                         /var/log/auth.log file ]
@@ -65,11 +65,14 @@ Options:
                         
   --limit=LIMIT         Number of requests per sec. If any ip exceeds the
                         specified number of requests per sec, gets banned.
+                        Default value of this option is 5.
 ```
 
 
 ## [warning]
 * Be careful when running ``` nmap ```  while this program is running because it may crash the program due to the difference in the packets size!
+
+* When setting the ``` --log-lines ``` option, dont give it a value less than 150.
 
 * Do not edit the files ``` all.dat ``` and ``` blocked.dat ``` after ``` surl ``` creates them unless you know what you're doing!
 
