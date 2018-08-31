@@ -64,8 +64,7 @@ class IP_MAN(multiprocessing.Process):
                         else:
                             subprocess.call(['./block.sh', host, self.IFACE]); 
                             self.store_blocked(host, self.BLOCKED_FILE); 
-
-    
+                            
     def is_blocked(self, ip, fp):
         if os.path.exists(fp):
             f = open(fp, 'r+');
@@ -73,7 +72,6 @@ class IP_MAN(multiprocessing.Process):
             f.close();
             if ip+'\n' in l:
                 return True;
-
 
     def store_blocked(self, ip, f):
         if os.path.exists(f):
