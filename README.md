@@ -1,5 +1,5 @@
 # - About SURL -
-A tool that inspects all incoming packets and filters them by ``` dest port ``` and ``` dest ip ```
+A tool that inspects all incoming packets, filters them by ``` dest port ``` and ``` dest ip ``` and extracts the ``` requested url ```, ``` request method ``` and ``` protocol ```.
 
 
 ## - More Info -
