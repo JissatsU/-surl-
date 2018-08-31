@@ -209,7 +209,7 @@ def Main():
                             counter += 1;
                             log('all.dat', (MSGS['url-msg']['no-c'] % msg)+'['+str(counter)+']', False);
                             
-            # SSH COMING SOON...
+            # SSH ...
 
 if __name__ == '__main__':
     print bann;
