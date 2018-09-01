@@ -28,7 +28,7 @@ A tool that inspects all incoming packets, filters them by ``` dest port ``` and
 
 * The ``` --ssh ``` option is available but won't happen anything because that part of the script is not done yet.
 
-* You have to create the file with all the urls of your site that you want to monitor and give it as a value to ``` --urls ``` option (ex. --urls=my_urls.dat).
+* You have to create the file with all the urls of your site that you want to monitor and give it as a value to ``` --urls ``` option (ex. ``` --urls=my_urls.dat ```).
 
 
 
