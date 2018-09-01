@@ -12,7 +12,7 @@ A tool that inspects all incoming packets, filters them by ``` dest port ``` and
   
   * creating a file called ``` inf.dat ``` which is used for logging when someone visits the url you specified in the  ``` --url ``` option.
   
-  * creating a file called ``` all.dat ``` which is used for logging when the requested url matches any of the urls in the urls file specified in the ``` --urls ``` option.
+  * creating a file called ``` all.dat ``` which is used for logging when the requested url matches any of the urls in the urls file specified in the ``` --urls ``` option.(you have to create the file and store all urls of your site that you want to monitor ex. ``` --urls=my_urls.dat ```)
   
   * creating a file called ``` blocked.dat ``` which is used for logging the blocked ips and to verify that a specific host is blocked. If you remove a host from that file, another ``` iptables ``` rule will be added with the same host.
   
