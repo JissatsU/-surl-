@@ -21,6 +21,10 @@ A tool that inspects all incoming packets, filters them by ``` dest port ``` and
   * checks the /var/log/auth.log file to see if there are any recent ssh connection attempts (it checks the file every 2 sec)
 
 
+## - [Usage] -
+* ex. ``` sudo python2.7 main.py --iface=YOUR INTERFACE --ip=192.168.1.103 --url=/forum --urls=YOUR_URLS_FILE.dat ```
+
+
 ## - [Important] -
 * You can use both the ``` --url ``` and ``` --urls ``` commands at the same time, but can't do that with both ``` --url ``` and ``` --ssh ```
 
@@ -54,7 +58,7 @@ Options:
                         /var/log/auth.log file ]
                         
   --ip=IP               This option is used in combo with [ --url ].
-                        Specifies your IP.
+                        Must hold your ip.
                         
   -i IFACE, --iface=IFACE
                         Bind your interface.
