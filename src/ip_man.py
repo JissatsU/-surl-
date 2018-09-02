@@ -2,7 +2,6 @@
 
 import os, os.path
 import sys
-import re
 import time 
 import datetime
 import multiprocessing
