@@ -26,7 +26,8 @@ class IP_MAN(multiprocessing.Process):
             self.check_hosts_time(self.HOSTS);
             self.HOSTS = {};
 
-    # Store each host with its access time intervals in [self.HOSTS]
+    # Store each host in a dictionary with its access time intervals
+    # self.HOSTS
     def store_hosts(self, filename):
         if os.path.exists(filename):
             with open(filename, 'r+') as fp:
