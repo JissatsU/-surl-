@@ -28,7 +28,7 @@ A tool that inspects all incoming packets, filters them by ``` dest port ``` and
 
 * The ``` --ssh ``` option is available but won't happen anything because that part of the script is not done yet.
 
-* You have to create the file with all the urls of your site that you want to monitor and give it as a value to ``` --urls ``` option (ex. ``` --urls=my_urls.dat ```).
+* If you're gonna use the ``` --urls ```, you will have to create the file with all the urls of your site that you want to monitor and give it as a value to the option (ex. ``` --urls=my_urls.dat ```).
 You can also store the url in your file as a ``` regex ``` by adding ``` [REGEX] ``` at the end.
 ```
    /
@@ -36,6 +36,7 @@ You can also store the url in your file as a ``` regex ``` by adding ``` [REGEX]
    /admin-panel
    /user/([0-9]*) [REGEX]
    /forum([\?].*) [REGEX]
+   /posts [REGEX]
 ```
 
 
