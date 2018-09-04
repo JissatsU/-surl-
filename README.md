@@ -1,5 +1,5 @@
 # - About SURL -
-A tool that inspects all incoming packets, filters them by ``` dest port ``` and ``` dest ip ``` and extracts the ``` request url ```, ``` request method ```, ``` protocol ``` and notifies you with a sound and message if the ``` request url ``` matches with the one you specified in the ``` --url ``` option.
+A tool that inspects all incoming packets, filters them by ``` dest port ``` and ``` dest ip ``` and extracts the ``` request url ```, ``` request method ```, ``` protocol ``` and notifies you with a sound and outputs to terminal if the ``` request url ``` matches with the one you specified in the ``` --url ``` option.
 
 
 ## - More Info -
