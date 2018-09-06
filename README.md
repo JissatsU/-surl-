@@ -4,7 +4,7 @@ A tool that inspects all incoming packets, filters them by ``` dest port ``` and
 
 ## - More Info -
 ### For the url requests it works by:
-  * parsing GET requests only (for now)
+  * parsing GET & POST requests only
   
   * if the ``` --block ``` option is set it starts an ip manager as a separate process which reads the ``` all.dat ``` file every ``` 1sec ``` to extract all the hosts with their time intervals and blocks connections to every host that tries to flood your webserver [ http flood ].
   
