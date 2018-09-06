@@ -56,7 +56,7 @@ def parse_req(data):
                 result += char;
         result += '\x20';
 
-    if 'GET' in result:
+    if ('GET' in result) or ('POST' in result):
         req_info = result.split(' ');
         if len(req_info) >= 0x03:
             req['type'] = req_info[0x00];
