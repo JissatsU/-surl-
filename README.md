@@ -17,16 +17,11 @@ A tool that inspects all incoming packets, filters them by ``` dest port ``` and
   * creating a file called ``` blocked.dat ``` which is used for logging the blocked ips and to verify that a specific host is blocked. If you remove a host from that file, another ``` iptables ``` rule will be added with the same host.
   
 
-### For ssh it:
-  * checks the /var/log/auth.log file to see if there are any recent ssh connection attempts (it checks the file every 2 sec)
-  
 
 ## - [Important] -
-* You can use both the ``` --url ``` and ``` --urls ``` commands at the same time, but can't do that with both ``` --url ``` and ``` --ssh ```
+* You can use both the ``` --url ``` and ``` --urls ``` commands at the same time, but can't do that with ``` --url ``` 
 
 * When setting the ``` --log-lines ``` option, dont give it a value less than 150.
-
-* The ``` --ssh ``` option is available but won't happen anything because that part of the script is not done yet.
 
 * If you're gonna use the ``` --urls ```, you will have to create the file with all the urls of your site that you want to monitor and give it as a value to the option (ex. ``` --urls=my_urls.dat ```).
 You can also store the url in your file as a ``` regex ``` by adding ``` [REGEX] ``` at the end.
@@ -49,10 +44,7 @@ Options:
   
   -u URL, --url=URL     Specific url connection monitoring.
   
-  -p PORT, --port=PORT  Specify the port for your webserver. For --url it defaults to 80 and ssh to 22.
-  
-  --ssh=SSH             SSH connection monitoring. [ Works by checking the
-                        /var/log/auth.log file ]
+  -p PORT, --port=PORT  Specify the port for your webserver. It defaults to 80
                         
   --ip=IP               This option is used in combo with [ --url ].
                         Must hold your ip.
