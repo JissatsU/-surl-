@@ -1,6 +1,6 @@
 #!/usr/bin/python27
 
-# Copyright scVnner
+# Copyright killua
 
 import os, os.path, socket, sys, time, struct, subprocess, optparse, re, logging, random
 from packet import ETH, IP, TCP, eth_size
